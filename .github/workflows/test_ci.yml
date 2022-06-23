@@ -18,10 +18,14 @@ jobs:
       run: |
         # $CONDA is an environment variable pointing to the root of the miniconda directory
         echo $CONDA/bin >> $GITHUB_PATH
-    - name: Install conda env & dependencies
-      run: |
-       conda env update --file environment.yml --name base
-       conda list
-    - name: Run tests
-      run: |
-        ./all_tests.sh
+#    - name: Install conda env & dependencies
+#      run: |
+#       conda env update --file environment.yml --name base
+#       conda list
+#    - name: Run tests
+#      run: |
+#        ./all_tests.sh
+    - name: Run tests and collect coverage
+      run: pytest --cov
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
