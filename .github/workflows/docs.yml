@@ -4,6 +4,7 @@ on:
   # [TODO] change to Aleksei
     branches: 
       - sf2-docs
+      - sf2_play
 jobs:
   deploy:
     runs-on: ubuntu-latest
