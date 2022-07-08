@@ -41,5 +41,7 @@ Consider using Sample Factory if you train agents in these environments.
 codebase for other types of async RL algorithms.
 
 
-https://user-images.githubusercontent.com/30235642/177220129-a70079e4-b64d-481b-8d78-62643af0129f.mp4
+<video width="800" controls>
+  <source src="https://user-images.githubusercontent.com/30235642/177220129-a70079e4-b64d-481b-8d78-62643af0129f.mp4" type="video/mp4">
+</video>
 
