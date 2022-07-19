@@ -22,6 +22,7 @@ def make_gym_env_func(full_env_name, cfg=None, env_config=None):
 
 def register_custom_components():
     register_env("CartPole-v1", make_gym_env_func)
+    register_env("LunarLander-v2", make_gym_env_func)
 
 
 def parse_custom_args(evaluation=False):
