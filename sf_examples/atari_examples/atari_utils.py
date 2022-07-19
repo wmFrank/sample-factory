@@ -36,6 +36,9 @@ ATARI_ENVS = [
     AtariSpec("atari_mspacman", "MsPacmanNoFrameskip-v4"),
     AtariSpec("atari_seaquest", "SeaquestNoFrameskip-v4"),
     AtariSpec("atari_beamrider", "BeamRiderNoFrameskip-v4"),
+    AtariSpec("atari_cartpole", "CartPole-v1"),
+    AtariSpec("atari_acrobot", "Acrobot-v1"),
+    AtariSpec("atari_mountaincar", "MountainCar-v0"),
 ]
 
 
@@ -48,22 +51,5 @@ def atari_env_by_name(name):
 
 def make_atari_env(env_name, cfg, env_config, **kwargs):
     atari_spec = atari_env_by_name(env_name)
-
-    # TODO to render atari, need to add render_mode, will totally fix it in one week
-    # env = gym.make(atari_spec.env_id, render_mode='human')
     env = gym.make(atari_spec.env_id)
-    if atari_spec.default_timeout is not None:
-        env._max_episode_steps = atari_spec.default_timeout
-
-    env = gym.wrappers.RecordEpisodeStatistics(env)
-    env = NoopResetEnv(env, noop_max=30)
-    env = MaxAndSkipEnv(env, skip=4)
-    env = EpisodicLifeEnv(env)
-    if "FIRE" in env.unwrapped.get_action_meanings():
-        env = FireResetEnv(env)
-    env = ClipRewardEnv(env)
-    env = gym.wrappers.ResizeObservation(env, (84, 84))
-    env = gym.wrappers.GrayScaleObservation(env)
-    env = FrameStack(env, 4)
-    # env = StackFramesWrapper(env, stack_past_frames=4, channel_config="CHW")
     return env
