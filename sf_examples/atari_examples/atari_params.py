@@ -21,7 +21,7 @@ def atari_benchmark_defaults(env, parser):
         encoder_subtype="mlp_cc",
         # actor_critic_share_weights=False,
         hidden_size=64,
-        # encoder_extra_fc_layers=1,
+        encoder_extra_fc_layers=0,
         obs_subtract_mean=0.0,
         obs_scale=1.0,
         gamma=0.99,
@@ -59,6 +59,7 @@ def atari_benchmark_defaults(env, parser):
         serial_mode=False,
         async_rl=False,
         experiment_summaries_interval=3,
+        adam_eps=1e-5,
     )
 
 

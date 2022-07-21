@@ -2,22 +2,23 @@ from sample_factory.runner.run_description import Experiment, ParamGrid, RunDesc
 
 _params = ParamGrid(
     [
-        ("seed", [000, 111, 222, 333]),
+        ("seed", [0]),
         (
             "env",
             [
-                # "atari_cartpole",
-                # "atari_acrobot",
+                "atari_cartpole",
+                "atari_acrobot",
                 "atari_mountaincar",
             ],
         ),
+        ("adam_eps", [1e-4, 1e-5, 1e-6, 1e-7, 1e-8]),
     ]
 )
 
 _experiments = [
     Experiment(
         "atari_test_run",
-        "python -m sf_examples.atari_examples.experiments.benchmark_atari --algo=APPO --with_wandb=True --wandb_user=wmFrank --wandb_project=classic-control-benchmark --wandb_group=cc-mountaincar --wandb_tags run0",
+        "python -m sf_examples.atari_examples.experiments.benchmark_atari --algo=APPO --with_wandb=True --wandb_user=wmFrank --wandb_project=classic-control-benchmark --wandb_group=cc-all-adam-eps --wandb_tags run0",
         _params.generate_params(randomize=False),
     ),
 ]

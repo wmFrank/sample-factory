@@ -44,6 +44,7 @@ def init_wandb(cfg):
             tags=cfg.wandb_tags,
             resume=True,
             settings=wandb.Settings(start_method="fork"),
+            monitor_gym=True,
         )
 
     log.debug("Initializing WandB...")
