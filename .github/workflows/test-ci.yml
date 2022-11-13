@@ -42,7 +42,7 @@ jobs:
       with:
         timeout_minutes: 1000
         max_attempts: 1
-        command: pytest -s tests/examples/test_example_sampler.py
+        command: pytest -s tests/examples/test_example_multi.py
 
   run-tests-mac:
     strategy:
@@ -74,4 +74,4 @@ jobs:
       with:
         timeout_minutes: 1000
         max_attempts: 1
-        command: pytest -s tests/examples/test_example_sampler.py
+        command: pytest -s tests/examples/test_example_multi.py
