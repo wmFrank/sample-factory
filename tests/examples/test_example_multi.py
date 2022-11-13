@@ -26,7 +26,7 @@ def run_test_env_multi(cfg: Config, eval_cfg: Config, **kwargs):
 
 
 class TestExampleMulti:
-    @pytest.mark.parametrize("execution_number", range(5))
+    @pytest.mark.parametrize("execution_number", range(50))
     @pytest.mark.parametrize("async_rl", [False, True])
     @pytest.mark.parametrize("train_steps", [512])
     def test_sanity(self, async_rl: bool, train_steps: int, execution_number):
@@ -43,7 +43,7 @@ class TestExampleMulti:
             expected_reward_at_least=-6,  # random policy does ~-5.5, here we don't learn long enough to improve
         )
 
-    @pytest.mark.parametrize("execution_number", range(5))
+    @pytest.mark.parametrize("execution_number", range(50))
     def test_example_multi(self, execution_number):
         cfg, eval_cfg = default_multi_cfg()
         cfg.async_rl = True
