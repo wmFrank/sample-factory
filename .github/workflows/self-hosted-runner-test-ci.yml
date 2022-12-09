@@ -10,23 +10,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.8.15']
+        python-version: ['3.8']
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Add conda to system path
+    - name: Create conda env
       run: |
-        # $CONDA is an environment variable pointing to the root of the miniconda directory
-        echo $CONDA/bin >> $GITHUB_PATH
-    - name: Install conda env & dependencies
+        conda create -n sf-self-hosted-runner-test python=${{ matrix.python-version }}
+    - name: Install dependencies
       run: |
-       conda install python=${{ matrix.python-version }}
-       pip install -e '.[atari, mujoco, envpool]'
-       conda list
+        pwd
+        pip install -e '.[atari, mujoco, vizdoom, envpool]'
+        conda list
     - name: Install test dependencies
       run: |
         pip install pytest
