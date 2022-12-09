@@ -18,6 +18,7 @@ jobs:
       run: |
         which conda
         conda env list
+        conda deactivate
         conda env remove -n sf-self-hosted-runner-test
         conda create -n sf-self-hosted-runner-test python=${{ matrix.python-version }}
         conda activate sf-self-hosted-runner-test
