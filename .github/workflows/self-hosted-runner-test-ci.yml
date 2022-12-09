@@ -18,10 +18,14 @@ jobs:
       run: |
         which conda
         conda env list
+        source /Users/mingwang/miniconda3/bin/activate
+        conda init bash
+        conda deactivate
+        conda env remove -n self-hosted-runner
+        conda create -n self-hosted-runner python=${{ matrix.python-version }}
     - name: Install dependencies
       run: |
         pwd
-        conda install python=${{ matrix.python-version }}
         pip install -e '.[atari, mujoco]'
         conda list
     - name: Install test dependencies
