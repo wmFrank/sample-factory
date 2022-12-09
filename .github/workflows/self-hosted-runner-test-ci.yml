@@ -21,7 +21,7 @@ jobs:
         conda env remove -n sf-self-hosted-runner-test
         conda create -n sf-self-hosted-runner-test python=${{ matrix.python-version }}
         source /opt/conda/bin/activate
-        conda init
+        conda init bash
         conda activate sf-self-hosted-runner-test
     - name: Install dependencies
       run: |
