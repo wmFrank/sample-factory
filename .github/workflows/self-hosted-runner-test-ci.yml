@@ -19,6 +19,7 @@ jobs:
         which conda
         conda env list
         conda create -n sf-self-hosted-runner-test python=${{ matrix.python-version }}
+        conda activate sf-self-hosted-runner-test
     - name: Install dependencies
       run: |
         pwd
