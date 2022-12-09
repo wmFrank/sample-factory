@@ -23,6 +23,7 @@ jobs:
         conda deactivate
         conda env remove -n self-hosted-runner
         conda create -n self-hosted-runner python=${{ matrix.python-version }}
+        conda activate self-hosted-runner
     - name: Install dependencies
       run: |
         pwd
