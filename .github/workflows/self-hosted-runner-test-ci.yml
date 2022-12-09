@@ -18,6 +18,7 @@ jobs:
       run: |
         which conda
         conda env list
+        conda init bash
         conda deactivate
         conda env remove -n self-hosted-runner
         conda create -n self-hosted-runner python=${{ matrix.python-version }}
