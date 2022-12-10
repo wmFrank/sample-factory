@@ -19,6 +19,7 @@ jobs:
         which conda
         conda env list
         source /Users/mingwang/miniconda3/bin/activate
+        source /Users/mingwang/miniconda3/bin/deactivate
         conda init bash
         conda deactivate
         conda env remove -n self-hosted-runner
