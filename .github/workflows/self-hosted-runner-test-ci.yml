@@ -18,7 +18,6 @@ jobs:
       run: |
         which conda
         conda env list
-        source /Users/mingwang/miniconda3/bin/activate
         source /Users/mingwang/miniconda3/bin/deactivate
         conda init bash
         conda deactivate
@@ -28,6 +27,8 @@ jobs:
     - name: Install dependencies
       run: |
         pwd
+        source /Users/mingwang/miniconda3/bin/activate
+        conda init bash
         conda activate self-hosted-runner
         pip install -e '.[atari, mujoco]'
         conda list
