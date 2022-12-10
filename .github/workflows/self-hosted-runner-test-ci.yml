@@ -18,23 +18,21 @@ jobs:
       run: |
         which conda
         conda env list
-        source /Users/mingwang/miniconda3/bin/deactivate
-        conda init bash
-        conda deactivate
         conda env remove -n self-hosted-runner
         conda create -n self-hosted-runner python=${{ matrix.python-version }}
+    - name: Add conda to system path
+      run: |
+        echo "/Users/mingwang/miniconda3/envs/self-hosted-runner/bin" >> $GITHUB_PATH
     - name: Install dependencies
       run: |
         pwd
-        source /Users/mingwang/miniconda3/bin/activate
-        conda init bash
-        conda activate self-hosted-runner
-        conda install grpcio
         conda list
+        conda install grpcio
         pip install -e '.[atari, mujoco]'
         conda list
     - name: Install test dependencies
       run: |
+        conda init bash
         pip install pytest
     - name: Run Pre-check
       uses: nick-fields/retry@v2
