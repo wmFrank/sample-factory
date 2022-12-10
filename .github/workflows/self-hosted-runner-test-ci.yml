@@ -22,17 +22,16 @@ jobs:
         conda create -n self-hosted-runner python=${{ matrix.python-version }}
     - name: Add conda to system path
       run: |
-        echo "/Users/mingwang/miniconda3/envs/self-hosted-runner/bin" >> $GITHUB_PATH
+        echo "/opt/conda/envs/self-hosted-runner/bin" >> $GITHUB_PATH
     - name: Install dependencies
       run: |
         pwd
-        conda list
-        conda install grpcio
-        pip install -e '.[atari, mujoco]'
+        pip install -e '.[atari, mujoco, envpool]'
+        nvcc -V
+        pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html
         conda list
     - name: Install test dependencies
       run: |
-        conda init bash
         pip install pytest
     - name: Run Pre-check
       uses: nick-fields/retry@v2
