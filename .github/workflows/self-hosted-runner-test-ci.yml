@@ -23,13 +23,13 @@ jobs:
         conda deactivate
         conda env remove -n self-hosted-runner
         conda create -n self-hosted-runner python=${{ matrix.python-version }}
-        conda list
     - name: Install dependencies
       run: |
         pwd
         source /Users/mingwang/miniconda3/bin/activate
         conda init bash
         conda activate self-hosted-runner
+        conda list
         pip install -e '.[atari, mujoco]'
         conda list
     - name: Install test dependencies
