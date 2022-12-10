@@ -29,6 +29,7 @@ jobs:
         source /Users/mingwang/miniconda3/bin/activate
         conda init bash
         conda activate self-hosted-runner
+        conda install grpcio
         conda list
         pip install -e '.[atari, mujoco]'
         conda list
